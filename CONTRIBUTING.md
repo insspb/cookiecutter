@@ -1,58 +1,47 @@
-============
-Contributing
-============
+# CONTRIBUTING TO COOKIECUTTER
 
 Contributions are welcome, and they are greatly appreciated! Every
 little bit helps, and credit will always be given.
 
-.. toctree::
-   :numbered:
-   :maxdepth: 2
 
-   types_of_contributions
-   contributor_setup
-   contributor_guidelines
-   contributor_testing
-   core_committer_guide
+- [Types of Contributions](#Types-of-Contributions)
+- [Contributor Setup](#Setting-Up-the-Code-for-Local-Development)
+- [Contributor Guidelines](#Contributor-Guidelines)
+- [Contributor Testing](#Testing-with-tox)
+- [Core Committer Guide](#Core-Committer-Guide)
 
 
-
-Types of Contributions
-----------------------
+## Types of Contributions
 
 You can contribute in many ways:
 
-Create Cookiecutter Templates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Create Cookiecutter Templates
 
-Some other Cookiecutter templates to list in the :ref:`README <readme>` would
+Some other Cookiecutter templates to list in the [README](README.md) would
 be great.
 
 If you create a Cookiecutter template, submit a pull request adding it to
-README.rst.
+README.md.
 
-Report Bugs
-~~~~~~~~~~~
+### Report Bugs
 
 Report bugs at https://github.com/audreyr/cookiecutter/issues.
 
 If you are reporting a bug, please include:
 
-* Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* If you can, provide detailed steps to reproduce the bug.
-* If you don't have steps to reproduce the bug, just note your observations in
+- Your operating system name and version.
+- Any details about your local setup that might be helpful in troubleshooting.
+- If you can, provide detailed steps to reproduce the bug.
+- If you don't have steps to reproduce the bug, just note your observations in
   as much detail as you can. Questions to start a discussion about the issue
   are welcome.
 
-Fix Bugs
-~~~~~~~~
+### Fix Bugs
 
 Look through the GitHub issues for bugs. Anything tagged with "bug"
 is open to whoever wants to implement it.
 
-Implement Features
-~~~~~~~~~~~~~~~~~~
+### Implement Features
 
 Look through the GitHub issues for features. Anything tagged with "enhancement"
 and "please-help" is open to whoever wants to implement it.
@@ -64,8 +53,7 @@ with "please-help" might not get into core. We're trying to keep the code base
 small, extensible, and streamlined. Whenever possible, it's best to try and
 implement feature ideas as separate projects outside of the core codebase.
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
+### Write Documentation
 
 Cookiecutter could always use more documentation, whether as part of the
 official Cookiecutter docs, in docstrings, or even on the web in blog posts,
@@ -79,8 +67,7 @@ If you want to review your changes on the documentation locally, you can do::
 This will compile the documentation, open it in your browser and start
 watching the files for changes, recompiling as you save.
 
-Submit Feedback
-~~~~~~~~~~~~~~~
+### Submit Feedback
 
 The best way to send feedback is to file an issue at
 https://github.com/audreyr/cookiecutter/issues.
@@ -92,74 +79,73 @@ If you are proposing a feature:
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
-
-
-Setting Up the Code for Local Development
------------------------------------------
+## Setting Up the Code for Local Development
 
 Here's how to set up `cookiecutter` for local development.
 
 1. Fork the `cookiecutter` repo on GitHub.
-2. Clone your fork locally::
+2. Clone your fork locally:
 
+```
     $ git clone git@github.com:your_name_here/cookiecutter.git
+```
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
-
+3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development:
+ ```
     $ mkvirtualenv cookiecutter
     $ cd cookiecutter/
     $ python setup.py develop
+ ```
 
-4. Create a branch for local development::
+4. Create a branch for local development:
 
+```
     $ git checkout -b name-of-your-bugfix-or-feature
+```
 
 Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass the tests and flake8::
+5. When you're done making changes, check that your changes pass the tests and flake8:
 
+```
     $ pip install tox
     $ tox
+```
 
 Please note that tox runs flake8 automatically, since we have a test environment for it.
 
-If you feel like running only the flake8 environment, please use the following command::
-
+If you feel like running only the flake8 environment, please use the following command:
+```
     $ tox -e flake8
+```
 
-6. Commit your changes and push your branch to GitHub::
-
+6. Commit your changes and push your branch to GitHub:
+```
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
+```
 
 7. Check that the test coverage hasn't dropped::
-
+```
     $ tox -e cov-report
+```
 
 8. Submit a pull request through the GitHub website.
 
 
+## Contributor Guidelines
 
-Contributor Guidelines
-----------------------
-
-Pull Request Guidelines
-~~~~~~~~~~~~~~~~~~~~~~~
+### Pull Request Guidelines
 
 Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.5, 3.6, 3.7, and PyPy on
-   AppVeyor and Travis CI.
-4. Check https://travis-ci.org/audreyr/cookiecutter/pull_requests and
-   https://ci.appveyor.com/project/audreyr/cookiecutter/history to ensure the tests pass for all supported Python versions and platforms.
+2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in README.md.
+3. The pull request should work for Python 2.7, 3.4, 3.5, 3.6, and PyPy on AppVeyor and Travis CI.
+4. Check https://travis-ci.org/audreyr/cookiecutter/pull_requests and https://ci.appveyor.com/project/audreyr/cookiecutter/history to ensure the tests pass for all supported Python versions and platforms.
 
-Coding Standards
-~~~~~~~~~~~~~~~~
+### Coding Standards
 
 * PEP8
 * Functions over classes except in tests
@@ -170,97 +156,81 @@ Coding Standards
   * Use triple double quotes for docstrings and raw string literals for regular expressions even if they aren't needed.
   * Example:
 
-    .. code-block:: python
-
-        LIGHT_MESSAGES = {
-            'English': "There are %(number_of_lights)s lights.",
-            'Pirate':  "Arr! Thar be %(number_of_lights)s lights."
-        }
-
-        def lights_message(language, number_of_lights):
-            """Return a language-appropriate string reporting the light count."""
-            return LIGHT_MESSAGES[language] % locals()
-
-        def is_pirate(message):
-            """Return True if the given message sounds piratical."""
-            return re.search(r"(?i)(arr|avast|yohoho)!", message) is not None
-
-  * Write new code in Python 3.
+```py
+    LIGHT_MESSAGES = {
+        'English': "There are %(number_of_lights)s lights.",
+        'Pirate':  "Arr! Thar be %(number_of_lights)s lights."
+    }
+    def lights_message(language, number_of_lights):
+        """Return a language-appropriate string reporting the light count."""
+        return LIGHT_MESSAGES[language] % locals()
+    def is_pirate(message):
+        """Return True if the given message sounds piratical."""
+        return re.search(r"(?i)(arr|avast|yohoho)!", message) is not None
+```
+* Write new code in Python 3.
 
 
-
-Testing with tox
-----------------
+## Testing with tox
 
 Tox uses py.test under the hood, hence it supports the same syntax for selecting tests.
 
 For further information please consult the `pytest usage docs`_.
 
-To run a particular test class with tox::
-
+To run a particular test class with tox:
+```
     $ tox -e py '-k TestFindHooks'
-
-To run some tests with names matching a string expression::
-
+```
+To run some tests with names matching a string expression:
+```
     $ tox -e py '-k generate'
-
+```
 Will run all tests matching "generate", test_generate_files for example.
 
-To run just one method::
-
+To run just one method:
+```
     $ tox -e py '-k "TestFindHooks and test_find_hook"'
-
-
-To run all tests using various versions of python in virtualenvs defined in tox.ini, just run tox.::
-
+```
+To run all tests using various versions of python in virtualenvs defined in tox.ini, just run tox.:
+```
     $ tox
+```
+This configuration file setup the pytest-cov plugin and it is an additional dependency. It generate a coverage report after the tests.
 
-This configuration file setup the pytest-cov plugin and it is an additional
-dependency. It generate a coverage report after the tests.
-
-It is possible to tests with some versions of python, to do this the command
-is::
-
-    $ tox -e py27,py35,pypy
-
-Will run py.test with the python2.7, python3.5 and pypy interpreters, for
-example.
+It is possible to tests with some versions of python, to do this the command is:
+```
+    $ tox -e py27,py34,pypy
+```
+Will run py.test with the python2.7, python3.4 and pypy interpreters, for example.
 
 
+## Core Committer Guide
 
-Core Committer Guide
-====================
-
-Vision and Scope
-----------------
+### Vision and Scope
 
 Core committers, use this section to:
 
 * Guide your instinct and decisions as a core committer
 * Limit the codebase from growing infinitely
 
-Command-Line Accessible
-~~~~~~~~~~~~~~~~~~~~~~~
+#### Command-Line Accessible
 
 * Provides a command-line utility that creates projects from cookiecutters
 * Extremely easy to use without having to think too hard
 * Flexible for more complex use via optional arguments
 
-API Accessible
-~~~~~~~~~~~~~~
+#### API Accessible
 
 * Entirely function-based and stateless (Class-free by intentional design)
 * Usable in pieces for developers of template generation tools
 
-Being Jinja2-specific
-~~~~~~~~~~~~~~~~~~~~~
+#### Being Jinja2-specific
 
 * Sets a standard baseline for project template creators, facilitating reuse
 * Minimizes the learning curve for those who already use Flask or Django
 * Minimizes scope of Cookiecutter codebase
 
-Extensible
-~~~~~~~~~~
+#### Extensible
 
 Being extendable by people with different ideas for Jinja2-based project template tools.
 
@@ -273,8 +243,7 @@ Freedom for Cookiecutter users to build and extend.
 * No officially-maintained cookiecutter templates, only ones by individuals
 * Commercial project-friendly licensing, allowing for private cookiecutters and private Cookiecutter-based tools
 
-Fast and Focused
-~~~~~~~~~~~~~~~~
+#### Fast and Focused
 
 Cookiecutter is designed to do one thing, and do that one thing very well.
 
@@ -283,14 +252,12 @@ Cookiecutter is designed to do one thing, and do that one thing very well.
 * Minimize internal line of code (LOC) count
 * Ultra-fast project generation for high performance downstream tools
 
-Inclusive
-~~~~~~~~~
+#### Inclusive
 
 * Cross-platform and cross-version support are more important than features/functionality
 * Fixing Windows bugs even if it's a pain, to allow for use by more beginner coders
 
-Stable
-~~~~~~
+#### Stable
 
 * Aim for 100% test coverage and covering corner cases
 * No pull requests will be accepted that drop test coverage on any platform, including Windows
@@ -298,8 +265,7 @@ Stable
 * Stable APIs that tool builders can rely on
 * New features require a +1 from 3 core committers
 
-VCS-Hosted Templates
-~~~~~~~~~~~~~~~~~~~~
+#### VCS-Hosted Templates
 
 Cookiecutter project templates are intentionally hosted VCS repos as-is.
 
@@ -310,8 +276,7 @@ Cookiecutter project templates are intentionally hosted VCS repos as-is.
 * Easy to create a public project template and host it for free
 * Easy to collaborate
 
-Process: Pull Requests
-----------------------
+### Process: Pull Requests
 
 If a pull request is untriaged:
 
@@ -321,18 +286,16 @@ If a pull request is untriaged:
 
 How to prioritize pull requests, from most to least important:
 
-#. Fixes for broken tests. Broken means broken on any supported platform or Python version.
-#. Extra tests to cover corner cases.
-#. Minor edits to docs.
-#. Bug fixes.
-#. Major edits to docs.
-#. Features.
+* Fixes for broken tests. Broken means broken on any supported platform or Python version.
+* Extra tests to cover corner cases.
+* Minor edits to docs.
+* Bug fixes.
+* Major edits to docs.
+* Features.
 
-Ensure that each pull request meets all requirements in this checklist:
-https://gist.github.com/audreyr/4feef90445b9680475f2
+Ensure that each pull request meets all requirements in this checklist:https://gist.github.com/audreyr/4feef90445b9680475f2
 
-Process: Issues
----------------
+### Process: Issues
 
 If an issue is a bug that needs an urgent fix, mark it for the next patch release.
 Then either fix it or mark as please-help.
@@ -341,8 +304,7 @@ For other issues: encourage friendly discussion, moderate debate, offer your tho
 
 New features require a +1 from 2 other core committers (besides yourself).
 
-Process: Roadmap
-----------------
+### Process: Roadmap
 
 The roadmap is https://github.com/audreyr/cookiecutter/milestones?direction=desc&sort=due_date&state=open
 
@@ -357,18 +319,15 @@ Milestone size:
 * If a milestone contains too much, move some to the next milestone.
 * Err on the side of more frequent patch releases.
 
-Process: Pull Request merging and HISTORY.rst maintenance
----------------------------------------------------------
+### Process: Pull Request merging and HISTORY.md maintenance
 
-If you merge a pull request, you're responsible for updating `AUTHORS.rst` and `HISTORY.rst`
+If you merge a pull request, you're responsible for updating `AUTHORS.md` and `HISTORY.md`
 
 When you're processing the first change after a release, create boilerplate following the existing pattern:
 
-.. code-block:: rest
-
+```rest
     x.y.z (Development)
-    ~~~~~~~~~~~~~~~~~~~
-
+    
     The goals of this release are TODO: release summary of features
 
     Features:
@@ -381,49 +340,48 @@ When you're processing the first change after a release, create boilerplate foll
 
     Other changes:
 
-    * Description of the change, thanks to @contributor (#PR).
+    * Description of the change, thanks to @contributor (#PR). 
 
     .. _`@contributor`: https://github.com/contributor
 
-Process: Accepting Template Pull Requests
------------------------------------------
+```
 
-#. Run the template to generate the project.
-#. Attempt to start/use the rendered project.
-#. Merge the template in.
-#. Update the history file.
+### Process: Accepting Template Pull Requests
 
-.. note:: Adding a template doesn't give authors credit.
+* Run the template to generate the project.
+* Attempt to start/use the rendered project.
+* Merge the template in.
+* Update the history file.
 
+note: Adding a template doesn't give authors credit.
 
-Process: Generating CONTRIBUTING.rst
--------------------------------------
+### Process: Generating Contributing.md
 
-From the `cookiecutter` project root::
-
+From the `cookiecutter` project root:
+```
     $ make contributing
-
-This will generate the following message::
-
-    rm CONTRIBUTING.rst
-    touch CONTRIBUTING.rst
-    cat docs/contributing.rst >> CONTRIBUTING.rst
-    echo "\n\n" >> CONTRIBUTING.rst
-    cat docs/types_of_contributions.rst >> CONTRIBUTING.rst
-    echo "\n\n" >> CONTRIBUTING.rst
-    cat docs/contributor_setup.rst >> CONTRIBUTING.rst
-    echo "\n\n" >> CONTRIBUTING.rst
-    cat docs/contributor_guidelines.rst >> CONTRIBUTING.rst
-    echo "\n\n" >> CONTRIBUTING.rst
-    cat docs/contributor_testing.rst >> CONTRIBUTING.rst
-    echo "\n\n" >> CONTRIBUTING.rst
-    cat docs/core_committer_guide.rst >> CONTRIBUTING.rst
-    echo "\n\nAutogenerated from the docs via \`make contributing\`" >> CONTRIBUTING.rst
+```
+This will generate the following message:
+```
+    rm CONTRIBUTING.md
+    touch CONTRIBUTING.md
+    cat docs/contributing.md >> CONTRIBUTING.md
+    echo "\n\n" >> CONTRIBUTING.md
+    cat docs/types_of_contributions.md >> CONTRIBUTING.md
+    echo "\n\n" >> CONTRIBUTING.md
+    cat docs/contributor_setup.md >> CONTRIBUTING.md
+    echo "\n\n" >> CONTRIBUTING.md
+    cat docs/contributor_guidelines.md >> CONTRIBUTING.md
+    echo "\n\n" >> CONTRIBUTING.md
+    cat docs/contributor_testing.md >> CONTRIBUTING.md
+    echo "\n\n" >> CONTRIBUTING.md
+    cat docs/core_committer_guide.md >> CONTRIBUTING.md
+    echo "\n\nAutogenerated from the docs via \`make contributing\`" >> CONTRIBUTING.md
     echo "WARNING: Don't forget to replace any :ref: statements with literal names"
     WARNING: Don't forget to replace any :ref: statements with literal names
+```
 
-Process: Your own code changes
-------------------------------
+### Process: Your own code changes
 
 All code changes, regardless of who does them, need to be reviewed and merged by someone else.
 This rule applies to all the core committers.
@@ -434,25 +392,24 @@ Exceptions:
 * While making a formal release, the release manager can make necessary, appropriate changes.
 * Small documentation changes that reinforce existing subject matter. Most commonly being, but not limited to spelling and grammar corrections.
 
-Responsibilities
-----------------
+### Responsibilities
 
-#. Ensure cross-platform compatibility for every change that's accepted. Windows, Mac, Debian & Ubuntu Linux.
-#. Ensure that code that goes into core meets all requirements in this checklist: https://gist.github.com/audreyr/4feef90445b9680475f2
-#. Create issues for any major changes and enhancements that you wish to make. Discuss things transparently and get community feedback.
-#. Don't add any classes to the codebase unless absolutely needed. Err on the side of using functions.
-#. Keep feature versions as small as possible, preferably one new feature per version.
-#. Be welcoming to newcomers and encourage diverse new contributors from all backgrounds. See the Python Community Code of Conduct (https://www.python.org/psf/codeofconduct/).
+* Ensure cross-platform compatibility for every change that's accepted. Windows, Mac, Debian & Ubuntu Linux.
+* Ensure that code that goes into core meets all requirements in this checklist: https://gist.github.com/audreyr/4feef90445b9680475f2
+* Create issues for any major changes and enhancements that you wish to make. Discuss things transparently and get community feedback.
+* Don't add any classes to the codebase unless absolutely needed. Err on the side of using functions.
+* Keep feature versions as small as possible, preferably one new feature per version.
+* Be welcoming to newcomers and encourage diverse new contributors from all backgrounds. See the Python Community Code of Conduct (https://www.python.org/psf/codeofconduct/).
 
-Becoming a Core Committer
--------------------------
+
+
+### Becoming a Core Committer
 
 Contributors may be given core commit privileges. Preference will be given to those with:
 
-A. Past contributions to Cookiecutter and other open-source projects. Contributions to Cookiecutter include both code (both accepted and pending) and friendly participation in the issue tracker. Quantity and quality are considered.
-B. A coding style that the other core committers find simple, minimal, and clean.
-C. Access to resources for cross-platform development and testing.
-D. Time to devote to the project regularly.
-
+1. Past contributions to Cookiecutter and other open-source projects. Contributions to Cookiecutter include both code (both accepted and pending) and friendly participation in the issue tracker. Quantity and quality are considered.
+2. A coding style that the other core committers find simple, minimal, and clean.
+3. Access to resources for cross-platform development and testing.
+4. Time to devote to the project regularly.
 
 Autogenerated from the docs via `make contributing`
